@@ -10,7 +10,7 @@ namespace OOP_Project
     {
        public int ID;
        public string Name;
-        Book[] borrowedBooks;
+       Book[] borrowedBooks;
         public Member(int _id,string _name)
         {
             ID = _id;

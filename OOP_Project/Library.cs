@@ -15,15 +15,27 @@ namespace OOP_Project
         {
             members = new Member[3];
         }
-        public void addMember(Member member)
+        public bool addMember(Member member)
         {
-            if (index < members.Length)
+            for (int i = 0; i < index; i++)
+            {
+                if(members[i].ID == member.ID)
+                {
+                    Console.WriteLine("This already exists");
+                    return false;
+                }
+
+            }
+            if (index < members.Length )
             {
                 members[index] = member;
                 index++;
                 Console.WriteLine($"Member '{member.Name}' added successfully.");
-            }
 
+                return true;
+            }
+           
+                return false;
         }
         public void removeMember(int id)
         {
@@ -40,14 +52,18 @@ namespace OOP_Project
         }
         public void listMemebers()
         {
-            if(index == 0)
+            if(index == 0 )
             {
                 Console.WriteLine("No members found.");
+               
             }
             Console.WriteLine("Library Members:");
             foreach (Member member in members)
             {
-                Console.WriteLine($"ID: {member.ID} ,Name: {member.Name}");
+                if (member != null)
+                {
+                    Console.WriteLine($"ID: {member.ID} ,Name: {member.Name}");
+                }
             }
         }
     }

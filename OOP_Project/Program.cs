@@ -14,6 +14,7 @@
             l1.addMember(m2);
             l1.addMember(m3);
             l1.removeMember(1);
+            l1.removeMember(2);
             l1.listMemebers();
 
         }
