@@ -13,7 +13,7 @@ namespace OOP_Project
         int index = 0;
         public Library()
         {
-            members = new Member[3];
+            members = new Member[4];
         }
         public void addMember(Member member)
         {
@@ -30,8 +30,13 @@ namespace OOP_Project
             {
                 members[index] = member;
                 index++;
-                Console.WriteLine($"Member '{member.Name}' added successfully."); 
-            }     
+                Console.WriteLine($"Member '{member.Name}' added successfully.");
+            }
+            else
+            {
+                Console.WriteLine($"cannot add more members in the library.");
+
+            }
         }
         public void removeMember(int id)
         {
