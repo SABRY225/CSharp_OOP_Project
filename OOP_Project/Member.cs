@@ -8,8 +8,14 @@ namespace OOP_Project
 {
     internal class Member
     {
-        int ID;
-        string Name;
+       public int ID;
+       public string Name;
         Book[] borrowedBooks;
+        public Member(int _id,string _name)
+        {
+            ID = _id;
+            Name = _name;
+        }
+       
     }
 }
