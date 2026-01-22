@@ -20,9 +20,9 @@ namespace OOP_Project
             bookCount = 0;
         }
 
-        #region Add, Remove and List Book
+        #region Add, Remove and List Member
         // Add Member
-        public void addMember(Member member)
+        public void AddMember(Member member)
         {
             for (int i = 0; i < memberCount; i++)
             {
@@ -47,7 +47,7 @@ namespace OOP_Project
         }
 
         // Remove Member
-        public void removeMember(int id)
+        public void RemoveMember(int id)
         {
            
             for (int i = 0; i < memberCount; i++)
@@ -68,7 +68,7 @@ namespace OOP_Project
         }
 
         // List Member
-        public void listMemebers()
+        public void ListMembers()
         {
             if(memberCount == 0 )
             {
