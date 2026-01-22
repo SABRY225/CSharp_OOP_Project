@@ -185,6 +185,7 @@ namespace OOP_Project
                 Console.WriteLine($"Book '{book.Title}' is not available for borrowing.");
                 return;
             }
+            member.addBorrowedBooks(book);
 
             book.IsAvailable = false;
             Console.WriteLine($"{member.Name} borrowed '{book.Title}'.");

@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
+//<<<<<<< HEAD
            
             Member m1 = new Member(1, "sh");
             Member m2 = new Member(2, "mm");
@@ -14,19 +14,19 @@
             Member m6 = new Member(6, "th");
             Library l1 = new Library();
             Member[] members = new Member[6];
-            l1.addMember(m1);
-            l1.addMember(m2);
-            l1.addMember(m3);
-            l1.addMember(m5);
-            l1.addMember(m4);
-            l1.addMember(m6);
-            //l1.removeMember(1);
-            l1.removeMember(3);
-            //l1.removeMember(3);
-            l1.listMemebers();
+            l1.AddMember(m1);
+            l1.AddMember(m2);
+            l1.AddMember(m3);
+            l1.AddMember(m5);
+            l1.AddMember(m4);
+            l1.AddMember(m6);
+            //l1.RemoveMember(1);
+            l1.RemoveMember(3);
+            //l1.RemoveMember(3);
+            l1.ListMembers();
             
             
-=======
+//=======
             Library library = new Library();
             int choice;
 
@@ -45,7 +45,7 @@
                 Console.Write("Select an option: ");
 
                 choice = int.Parse(Console.ReadLine());
->>>>>>> 8c4dc81a615e88a3c2bf1a180bba936ddc64c118
+//>>>>>>> 8c4dc81a615e88a3c2bf1a180bba936ddc64c118
 
                 switch (choice)
                 {
@@ -93,18 +93,18 @@
                         library.ReturnBook(memIdR, bookIdR);
                         break;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
             l1.ListBooks();
             l1.BorrowBook(1, 1);
             l1.BorrowBook(2, 2);
             l1.ListBooks();
             l1.ReturnBook(2, 2);
             l1.ListBooks();
-=======
+//=======
                     case 7:
                         library.ListBooks();
                         break;
->>>>>>> 8c4dc81a615e88a3c2bf1a180bba936ddc64c118
+//>>>>>>> 8c4dc81a615e88a3c2bf1a180bba936ddc64c118
 
                     case 8:
                         library.ListMembers();
