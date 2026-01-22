@@ -20,5 +20,16 @@ namespace OOP_Project
             Author = _author;
             IsAvailable = true;
         }
+        public string Availabe()
+        {
+            if (IsAvailable)
+            {
+                return "Available";
+            }
+            else
+            {
+                return "Not Available";
+            }
+        }
     }
 }

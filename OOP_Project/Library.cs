@@ -15,7 +15,7 @@ namespace OOP_Project
         int index = 0;
         public Library()
         {
-            members = new Member[4];
+            members = new Member[50];
             books = new Book[50];
             bookCount = 0;
         }
@@ -137,7 +137,7 @@ namespace OOP_Project
             for (int i = 0; i < bookCount; i++)
             {
                 Console.WriteLine(
-                    $"ID: {books[i].Id}, Title: {books[i].Title}, Author: {books[i].Author}, Available: {books[i].IsAvailable}"
+                    $"ID: {books[i].Id},\nTitle: {books[i].Title},\nAuthor: {books[i].Author},\nAvailable: {books[i].Availabe()}"
                 );
             }
         }
