@@ -12,16 +12,19 @@ namespace OOP_Project
         private int bookCount;
 
         Member[] members;
-        int index = 0;
+        int memberCount = 0;
         public Library()
         {
             members = new Member[50];
             books = new Book[50];
             bookCount = 0;
         }
+
+        #region Add, Remove and List Book
+        // Add Member
         public void addMember(Member member)
         {
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < memberCount; i++)
             {
                 if(members[i].ID == member.ID)
                 {
@@ -30,10 +33,10 @@ namespace OOP_Project
                 }
 
             }
-            if (index < members.Length )
+            if (memberCount < members.Length )
             {
-                members[index] = member;
-                index++;
+                members[memberCount] = member;
+                memberCount++;
                 Console.WriteLine($"Member '{member.Name}' added successfully.");
             }
             else
@@ -42,35 +45,39 @@ namespace OOP_Project
 
             }
         }
+
+        // Remove Member
         public void removeMember(int id)
         {
            
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < memberCount; i++)
             {
-                string memberName = members[i].Name;
                 if (members[i].ID == id)
                 {
-                   members[i] = members[index-1];
-                   members[index-1] = null;
-                   index--;
-                   Console.WriteLine($"Member '{memberName}' removed successfully.");
+                    Console.WriteLine($"Member '{members[i].Name}' removed successfully.");
+                    for (int j = i; j < memberCount-1; j++)
+                    {
+                        members[j] = members[j + 1];
+                    }
+                    memberCount--;
                    return;
                 }
 
             }
             Console.WriteLine($"Member with ID {id} not found.");
-
         }
+
+        // List Member
         public void listMemebers()
         {
-            if(index == 0 )
+            if(memberCount == 0 )
             {
                 Console.WriteLine("No members found.");
             }
             else
             {
                 Console.WriteLine("Library Members:");
-                for (int i = 0; i < index; i++)
+                for (int i = 0; i < memberCount; i++)
                 {
                     if (members[i] != null)
                     {
@@ -81,6 +88,7 @@ namespace OOP_Project
             
          
         }
+        #endregion
 
         #region Add, Remove and List Book
         // Add Book
