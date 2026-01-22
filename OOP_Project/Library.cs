@@ -47,9 +47,9 @@ namespace OOP_Project
                 if (members[i].ID == id)
                 {
                    members[i] = members[index-1];
-                    members[index-1] = null;
-                    index--;
-                    Console.WriteLine($"Member '{memberName}' removed successfully.");
+                   members[index-1] = null;
+                   index--;
+                   Console.WriteLine($"Member '{memberName}' removed successfully.");
                    return;
                 }
 
@@ -63,14 +63,18 @@ namespace OOP_Project
             {
                 Console.WriteLine("No members found.");
             }
-            Console.WriteLine("Library Members:");
-            for (int i = 0; i < index; i++)
+            else
             {
-                if (members[i] != null)
+                Console.WriteLine("Library Members:");
+                for (int i = 0; i < index; i++)
                 {
-                    Console.WriteLine($"ID: {members[i].ID} ,Name: {members[i].Name}");
+                    if (members[i] != null)
+                    {
+                        Console.WriteLine($"ID: {members[i].ID} ,Name: {members[i].Name}");
+                    }
                 }
             }
+            
          
         }
     }
