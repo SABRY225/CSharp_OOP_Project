@@ -23,8 +23,8 @@
             l1.removeMember(3);
             //l1.removeMember(3);
             l1.listMemebers();
-
-
+            
+            
 
 
 
@@ -42,7 +42,7 @@
             l1.RemoveBook(3);
 
             l1.ListBooks();
-
+            l1.BorrowBook(1, 1);
             l1.BorrowBook(2, 2);
             l1.ListBooks();
             l1.ReturnBook(2, 2);

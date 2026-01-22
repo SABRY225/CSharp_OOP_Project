@@ -81,7 +81,7 @@ namespace OOP_Project
                 {
                     if (members[i] != null)
                     {
-                        Console.WriteLine($"ID: {members[i].ID} ,Name: {members[i].Name}");
+                        Console.WriteLine($"ID: {members[i].ID} ,Name: {members[i].Name} , Borrowed Books: {members[i].GetBorrowedCount()}");
                     }
                 }
             }
