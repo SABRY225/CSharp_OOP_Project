@@ -8,12 +8,16 @@ namespace OOP_Project
 {
     internal class Library
     {
+        Book[] books;
+        private int bookCount;
 
         Member[] members;
         int index = 0;
         public Library()
         {
             members = new Member[4];
+            books = new Book[50];
+            bookCount = 0;
         }
         public void addMember(Member member)
         {
@@ -77,5 +81,67 @@ namespace OOP_Project
             
          
         }
+
+        #region Add, Remove and List Book
+        // Add Book
+        public void AddBook(Book book)
+        {
+            for (int i = 0; i < bookCount; i++)
+            {
+                if (books[i].Id == book.Id)
+                {
+                    Console.WriteLine($"Book with this ID:{book.Id} already exists.");
+                    return;
+                }
+            }
+
+            books[bookCount] = book;
+            bookCount++;
+            Console.WriteLine($"Book '{book.Title}' added successfully.");
+        }
+
+
+        // Remove Book
+        public void RemoveBook(int bookId)
+        {
+            for (int i = 0; i < bookCount; i++)
+            {
+                if (books[i].Id == bookId)
+                {
+                    Console.WriteLine($"Book '{books[i].Title}' removed successfully.");
+
+                    for (int j = i; j < bookCount - 1; j++)
+                    {
+                        books[j] = books[j + 1];
+                    }
+
+                    bookCount--;
+                    return;
+                }
+            }
+
+            Console.WriteLine("Book not found.");
+        }
+
+        // List Books
+        public void ListBooks()
+        {
+            Console.WriteLine("Books in Library:");
+
+            if (bookCount == 0)
+            {
+                Console.WriteLine("No books available.");
+                return;
+            }
+
+            for (int i = 0; i < bookCount; i++)
+            {
+                Console.WriteLine(
+                    $"ID: {books[i].Id}, Title: {books[i].Title}, Author: {books[i].Author}, Available: {books[i].IsAvailable}"
+                );
+            }
+        }
+
+        #endregion
     }
 }
