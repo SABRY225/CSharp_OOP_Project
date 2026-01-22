@@ -143,5 +143,75 @@ namespace OOP_Project
         }
 
         #endregion
+
+
+
+        #region Borrow Book
+
+        public void BorrowBook(int bookId, int memberId)
+        {
+            Console.WriteLine($"Book not found. {bookCount}");
+
+            if (bookCount == 0)
+            {
+                Console.WriteLine("No books in the library.");
+                return;
+            }
+            Book? book = Array.Find(books, b => b != null && b.Id == bookId);
+            Member? member = Array.Find(members, m => m != null && m.ID == memberId);
+
+            if (book == null)
+            {
+                Console.WriteLine("Book not found.");
+                return;
+            }
+
+            if (member == null)
+            {
+                Console.WriteLine("Member not found.");
+                return;
+            }
+
+            if (!book.IsAvailable)
+            {
+                Console.WriteLine($"Book '{book.Title}' is not available for borrowing.");
+                return;
+            }
+
+            book.IsAvailable = false;
+            Console.WriteLine($"{member.Name} borrowed '{book.Title}'.");
+        }
+
+        public void ReturnBook(int bookId, int memberId)
+        {
+            if (bookCount == 0)
+            {
+                Console.WriteLine("No books in the library.");
+                return;
+            }
+
+            Book? book = Array.Find(books, b => b != null && b.Id == bookId);
+            Member? member = Array.Find(members, m => m != null && m.ID == memberId);
+
+            if (book == null)
+            {
+                Console.WriteLine("Book not found.");
+                return;
+            }
+            if (member == null)
+            {
+                Console.WriteLine("Member not found.");
+                return;
+            }
+            if (book.IsAvailable)
+            {
+                Console.WriteLine($"Book '{book.Title}' is already available in the library.");
+                return;
+            }
+            book.IsAvailable = true;
+            Console.WriteLine($"{member.Name} returned '{book.Title}'.");
+        }
+
+        #endregion
     }
 }
