@@ -74,19 +74,17 @@ namespace OOP_Project
             {
                 Console.WriteLine("No members found.");
             }
-            else
+
+            Console.WriteLine("Library Members:");
+            for (int i = 0; i < memberCount; i++)
             {
-                Console.WriteLine("Library Members:");
-                for (int i = 0; i < memberCount; i++)
+                if (members[i] != null)
                 {
-                    if (members[i] != null)
-                    {
-                        Console.WriteLine($"ID: {members[i].ID} ,Name: {members[i].Name} , Borrowed Books: {members[i].GetBorrowedCount()}");
-                    }
+                    Console.WriteLine($"ID: {members[i].ID} ,Name: {members[i].Name} , Borrowed Books: {members[i].GetBorrowedCount()}");
                 }
             }
-            
-         
+
+
         }
         #endregion
 

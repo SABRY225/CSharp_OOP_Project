@@ -4,34 +4,77 @@
     {
         static void Main(string[] args)
         {
-//<<<<<<< HEAD
-           
-            Member m1 = new Member(1, "sh");
-            Member m2 = new Member(2, "mm");
-            Member m3 = new Member(3, "aa");
-            Member m4 = new Member(4, "may");
-            Member m5 = new Member(5, "bb");
-            Member m6 = new Member(6, "th");
-            Library l1 = new Library();
-            Member[] members = new Member[6];
-            l1.AddMember(m1);
-            l1.AddMember(m2);
-            l1.AddMember(m3);
-            l1.AddMember(m5);
-            l1.AddMember(m4);
-            l1.AddMember(m6);
-            //l1.RemoveMember(1);
-            l1.RemoveMember(3);
+
+            //Member m1 = new Member(1, "sh");
+            //Member m2 = new Member(2, "mm");
+            //Member m3 = new Member(3, "aa");
+            //Member m4 = new Member(4, "may");
+            //Member m5 = new Member(5, "bb");
+            //Member m6 = new Member(6, "th");
+            //Library l1 = new Library();
+            //Member[] members = new Member[6];
+            //l1.AddMember(m1);
+            //l1.AddMember(m2);
+            //l1.AddMember(m3);
+            //l1.AddMember(m5);
+            //l1.AddMember(m4);
+            //l1.AddMember(m6);
+            ////l1.RemoveMember(1);
             //l1.RemoveMember(3);
-            l1.ListMembers();
-            
-            
-//=======
+            ////l1.RemoveMember(3);
+            //l1.ListMembers();
+
+            string ReadRequiredString(string message)
+            {
+                string input;
+                do
+                {
+                    Console.Write(message);
+                    input = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(input))
+                        Console.WriteLine("Input cannot be empty.");
+
+                } while (string.IsNullOrWhiteSpace(input));
+
+                return input;
+            }
+
+            int ReadRequiredInt(string message)
+            {
+                int value;
+                string input;
+
+                do
+                {
+                    Console.Write(message);
+                    input = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(input))
+                    {
+                        Console.WriteLine("Input cannot be empty.");
+                        continue;
+                    }
+
+                    if (!int.TryParse(input, out value))
+                    {
+                        Console.WriteLine("Please enter a valid number.");
+                        continue;
+                    }
+
+                    return value;
+
+                } while (true);
+            }
+
+
+
             Library library = new Library();
             int choice;
 
             do
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nLibrary Management System");
                 Console.WriteLine("1. Add Book");
                 Console.WriteLine("2. Remove Book");
@@ -44,73 +87,63 @@
                 Console.WriteLine("9. Exit");
                 Console.Write("Select an option: ");
 
-                choice = int.Parse(Console.ReadLine());
-//>>>>>>> 8c4dc81a615e88a3c2bf1a180bba936ddc64c118
+                choice = ReadRequiredInt("Select an option: ");
 
                 switch (choice)
                 {
                     case 1:
-                        Console.Write("Book ID: ");
-                        int bId = int.Parse(Console.ReadLine());
-                        Console.Write("Title: ");
-                        string title = Console.ReadLine();
-                        Console.Write("Author: ");
-                        string author = Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        int bId = ReadRequiredInt("Book ID: ");
+                        string title = ReadRequiredString("Title: ");
+                        string author = ReadRequiredString("Author: ");
                         library.AddBook(new Book(bId, title, author));
                         break;
 
                     case 2:
-                        Console.Write("Book ID to remove: ");
-                        library.RemoveBook(int.Parse(Console.ReadLine()));
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        int removeBookId = ReadRequiredInt("Book ID to remove: ");
+                        library.RemoveBook(removeBookId);
                         break;
 
                     case 3:
-                        Console.Write("Member ID: ");
-                        int mId = int.Parse(Console.ReadLine());
-                        Console.Write("Name: ");
-                        string name = Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        int mId = ReadRequiredInt("Member ID: ");
+                        string name = ReadRequiredString("Name: ");
                         library.AddMember(new Member(mId, name));
                         break;
 
                     case 4:
-                        Console.Write("Member ID to remove: ");
-                        library.RemoveMember(int.Parse(Console.ReadLine()));
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        int removeMemberId = ReadRequiredInt("Member ID to remove: ");
+                        library.RemoveMember(removeMemberId);
                         break;
 
                     case 5:
-                        Console.Write("Member ID: ");
-                        int memId = int.Parse(Console.ReadLine());
-                        Console.Write("Book ID: ");
-                        int bookId = int.Parse(Console.ReadLine());
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        int memId = ReadRequiredInt("Member ID: ");
+                        int bookId = ReadRequiredInt("Book ID: ");
                         library.BorrowBook(memId, bookId);
                         break;
 
                     case 6:
-                        Console.Write("Member ID: ");
-                        int memIdR = int.Parse(Console.ReadLine());
-                        Console.Write("Book ID: ");
-                        int bookIdR = int.Parse(Console.ReadLine());
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        int memIdR = ReadRequiredInt("Member ID: ");
+                        int bookIdR = ReadRequiredInt("Book ID: ");
                         library.ReturnBook(memIdR, bookIdR);
                         break;
 
-//<<<<<<< HEAD
-            l1.ListBooks();
-            l1.BorrowBook(1, 1);
-            l1.BorrowBook(2, 2);
-            l1.ListBooks();
-            l1.ReturnBook(2, 2);
-            l1.ListBooks();
-//=======
                     case 7:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         library.ListBooks();
                         break;
-//>>>>>>> 8c4dc81a615e88a3c2bf1a180bba936ddc64c118
 
                     case 8:
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         library.ListMembers();
                         break;
 
                     case 9:
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
                         Console.WriteLine("Goodbye!");
                         break;
 
@@ -120,6 +153,7 @@
                 }
 
             } while (choice != 9);
+
         }
     }
 }
