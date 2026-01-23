@@ -137,7 +137,7 @@ namespace OOP_Project
                     found = true;
                     return;
                 }
-                else
+                else if (books[i].Id == bookId && !books[i].IsAvailable)
                 {
                     for (int j = 0; j < memberCount; j++)
                     {
