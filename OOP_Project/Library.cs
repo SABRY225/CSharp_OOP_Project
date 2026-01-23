@@ -244,9 +244,17 @@ namespace OOP_Project
                 Console.WriteLine($"Book '{book.Title}' is already available in the library.");
                 return;
             }
-            member.RemoveBorrowedBooks(book);
-            book.IsAvailable = true;
-            Console.WriteLine($"{member.Name} returned '{book.Title}'.");
+            
+            if(member.RemoveBorrowedBooks(book))
+            {
+                book.IsAvailable = true;
+                Console.WriteLine($"{member.Name} returned '{book.Title}'.");
+            }
+            else
+            {
+                Console.WriteLine($"{member.Name} did not borrow '{book.Title}'.");
+            }
+            
         }
 
         #endregion

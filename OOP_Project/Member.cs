@@ -29,7 +29,7 @@ namespace OOP_Project
             }
             return 0;
         }
-         public int RemoveBorrowedBooks(Book book)
+         public bool RemoveBorrowedBooks(Book book)
         {
             for (int i = 0; i < borrowCount; i++)
             {
@@ -41,10 +41,10 @@ namespace OOP_Project
                     }
                     borrowedBooks[borrowCount - 1] = null;
                     borrowCount--;
-                    return borrowCount;
+                    return true;
                 }
             }
-            return 0;
+            return false;
         }
         public int GetBorrowedCount()
         {
