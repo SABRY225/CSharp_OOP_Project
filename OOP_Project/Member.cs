@@ -29,9 +29,37 @@ namespace OOP_Project
             }
             return 0;
         }
+         public int RemoveBorrowedBooks(Book book)
+        {
+            for (int i = 0; i < borrowCount; i++)
+            {
+                if(borrowedBooks[i].Id == book.Id)
+                {
+                    for (int j = i; j < borrowCount - 1; j++)
+                    {
+                        borrowedBooks[j] = borrowedBooks[j + 1];
+                    }
+                    borrowedBooks[borrowCount - 1] = null;
+                    borrowCount--;
+                    return borrowCount;
+                }
+            }
+            return 0;
+        }
         public int GetBorrowedCount()
         {
             return borrowCount;
+        }
+        public bool GetMemberInfo(int bookIndex)
+        {
+            for (int i = 0; i < borrowCount; i++)
+            {
+                if(borrowedBooks[i].Id == bookIndex)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 

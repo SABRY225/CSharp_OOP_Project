@@ -49,10 +49,11 @@ namespace OOP_Project
         // Remove Member
         public void RemoveMember(int id)
         {
-           
+           bool found = false;
             for (int i = 0; i < memberCount; i++)
             {
-                if (members[i].ID == id)
+
+                if (members[i].ID == id && (members[i].borrowCount == 0))
                 {
                     Console.WriteLine($"Member '{members[i].Name}' removed successfully.");
                     for (int j = i; j < memberCount-1; j++)
@@ -60,11 +61,21 @@ namespace OOP_Project
                         members[j] = members[j + 1];
                     }
                     memberCount--;
-                   return;
+                    found = true;
+                    return;
+                }
+                else if (members[i].ID == id && (members[i].borrowCount > 0))
+                {
+                    Console.WriteLine("Cannot remove a member who has borrowed books.");
+                    found = true;
+                    return;
                 }
 
             }
-            Console.WriteLine($"Member with ID {id} not found.");
+            if (!found)
+            {
+                Console.WriteLine($"Member with ID {id} not found.");
+            }
         }
 
         // List Member
@@ -110,9 +121,10 @@ namespace OOP_Project
         // Remove Book
         public void RemoveBook(int bookId)
         {
+            bool found = false;
             for (int i = 0; i < bookCount; i++)
             {
-                if (books[i].Id == bookId)
+                if (books[i].Id == bookId && books[i].IsAvailable)
                 {
                     Console.WriteLine($"Book '{books[i].Title}' removed successfully.");
 
@@ -122,11 +134,29 @@ namespace OOP_Project
                     }
 
                     bookCount--;
+                    found = true;
+                    return;
+                }
+                else
+                {
+                    for (int j = 0; j < memberCount; j++)
+                    {
+                        
+                        if (members[j].GetMemberInfo(bookId))
+                        {
+                            Console.WriteLine($"can not remove a book that is currently borrowed by {members[j].Name}.");
+                        }
+
+                    }
+                    found = true;
                     return;
                 }
             }
 
-            Console.WriteLine("Book not found.");
+            if (!found)
+            {
+                Console.WriteLine("Book not found.");
+            }
         }
 
         // List Books
@@ -156,7 +186,6 @@ namespace OOP_Project
 
         public void BorrowBook(int bookId, int memberId)
         {
-            Console.WriteLine($"Book not found. {bookCount}");
 
             if (bookCount == 0)
             {
@@ -215,6 +244,7 @@ namespace OOP_Project
                 Console.WriteLine($"Book '{book.Title}' is already available in the library.");
                 return;
             }
+            member.RemoveBorrowedBooks(book);
             book.IsAvailable = true;
             Console.WriteLine($"{member.Name} returned '{book.Title}'.");
         }
