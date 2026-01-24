@@ -49,33 +49,31 @@ namespace OOP_Project
         // Remove Member
         public void RemoveMember(int id)
         {
-           bool found = false;
             for (int i = 0; i < memberCount; i++)
             {
-
-                if (members[i].ID == id && (members[i].borrowCount == 0))
+                if (members[i] != null && members[i].ID == id)
                 {
+                    if (members[i].borrowCount > 0)
+                    {
+                        Console.WriteLine("Cannot remove a member who has borrowed books.");
+                        return;
+                    }
+
                     Console.WriteLine($"Member '{members[i].Name}' removed successfully.");
-                    for (int j = i; j < memberCount-1; j++)
+
+                    for (int j = i; j < memberCount - 1; j++)
                     {
                         members[j] = members[j + 1];
                     }
-                    memberCount--;
-                    found = true;
-                    return;
-                }
-                else if (members[i].ID == id && (members[i].borrowCount > 0))
-                {
-                    Console.WriteLine("Cannot remove a member who has borrowed books.");
-                    found = true;
-                    return;
-                }
 
+                    members[memberCount - 1] = null; 
+                    memberCount--;
+
+                    return;
+                }
             }
-            if (!found)
-            {
-                Console.WriteLine($"Member with ID {id} not found.");
-            }
+
+            Console.WriteLine($"Member with ID {id} not found.");
         }
 
         // List Member
@@ -198,7 +196,7 @@ namespace OOP_Project
             }
             Book? book = Array.Find(books, b => b != null && b.Id == bookId);
             Member? member = Array.Find(members, m => m != null && m.ID == memberId);
-
+           
             if (book == null)
             {
                 Console.WriteLine("Book not found.");
@@ -218,8 +216,6 @@ namespace OOP_Project
             }
             int check = member.addBorrowedBooks(book);
 
-            //book.IsAvailable = false;
-            //Console.WriteLine($"{member.Name} borrowed '{book.Title}'.");
             if (check == 0)
             {
                 Console.WriteLine("You are reached borrowing limit.");
