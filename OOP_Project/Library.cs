@@ -216,10 +216,20 @@ namespace OOP_Project
                 Console.WriteLine($"Book '{book.Title}' is not available for borrowing.");
                 return;
             }
-            member.addBorrowedBooks(book);
+            int check = member.addBorrowedBooks(book);
 
-            book.IsAvailable = false;
-            Console.WriteLine($"{member.Name} borrowed '{book.Title}'.");
+            //book.IsAvailable = false;
+            //Console.WriteLine($"{member.Name} borrowed '{book.Title}'.");
+            if (check == 0)
+            {
+                Console.WriteLine("You are reached borrowing limit.");
+                return;
+            }
+            else
+            {
+                book.IsAvailable = false;
+                Console.WriteLine($"{member.Name} borrowed '{book.Title}'.");
+            }
         }
 
         public void ReturnBook(int bookId, int memberId)

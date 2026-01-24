@@ -27,18 +27,27 @@
             string ReadRequiredString(string message)
             {
                 string input;
+
                 do
                 {
                     Console.Write(message);
-                    input = Console.ReadLine();
+                    input = Console.ReadLine()?.Trim();
 
-                    if (string.IsNullOrWhiteSpace(input))
+                    if (input == "\"\"" || input == "''")
+                        input = "";
+
+                    if (string.IsNullOrWhiteSpace(input) ||
+                        input.Equals("empty", StringComparison.OrdinalIgnoreCase))
+                    {
                         Console.WriteLine("Input cannot be empty.");
+                    }
 
-                } while (string.IsNullOrWhiteSpace(input));
+                } while (string.IsNullOrWhiteSpace(input) ||
+                         input.Equals("empty", StringComparison.OrdinalIgnoreCase));
 
                 return input;
             }
+
 
             int ReadRequiredInt(string message)
             {
