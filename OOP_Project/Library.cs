@@ -135,6 +135,7 @@ namespace OOP_Project
                         books[j] = books[j + 1];
                     }
 
+                    books[bookCount - 1] = null;
                     bookCount--;
                     found = true;
                     return;
