@@ -85,7 +85,6 @@
                 Console.WriteLine("7. List Books");
                 Console.WriteLine("8. List Members");
                 Console.WriteLine("9. Exit");
-                Console.Write("Select an option: ");
 
                 choice = ReadRequiredInt("Select an option: ");
 
@@ -122,14 +121,14 @@
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         int memId = ReadRequiredInt("Member ID: ");
                         int bookId = ReadRequiredInt("Book ID: ");
-                        library.BorrowBook(memId, bookId);
+                        library.BorrowBook(bookId, memId );
                         break;
 
                     case 6:
                         Console.ForegroundColor = ConsoleColor.Green;
                         int memIdR = ReadRequiredInt("Member ID: ");
                         int bookIdR = ReadRequiredInt("Book ID: ");
-                        library.ReturnBook(memIdR, bookIdR);
+                        library.ReturnBook(bookIdR,memIdR);
                         break;
 
                     case 7:

@@ -92,6 +92,10 @@ namespace OOP_Project
                 if (members[i] != null)
                 {
                     Console.WriteLine($"ID: {members[i].ID} ,Name: {members[i].Name} , Borrowed Books: {members[i].GetBorrowedCount()}");
+                    for (int j = 0; j < members[i].borrowCount; j++)
+                    {
+                        Console.WriteLine($"\tBook ID: {members[i].borrowedBooks[j].Id}, Title: {members[i].borrowedBooks[j].Title}");
+                    }
                 }
             }
 
