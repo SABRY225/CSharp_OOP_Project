@@ -1,4 +1,4 @@
-﻿namespace OOP_Project
+﻿ namespace OOP_Project
 {
     internal class Program
     {
